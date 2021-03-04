@@ -1,0 +1,20 @@
+<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 mb-5">
+    <figure class="effect-ming tm-video-item">
+        <img src="{{ photo.url_w }}" alt="Url not available" class="img-fluid">
+        <figcaption class="d-flex align-items-center justify-content-center">
+            <h2>{{ photo.title | default_if_none:"--"}}</h2>
+            <a  target="_blank"
+                href="https://live.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_b.jpg"
+                >View more</a>
+        </figcaption>                    
+    </figure>
+    <form action="{% url 'search:add_to_favourite'%}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="image_id" value="{{ photo.id }}">
+        <input type="hidden" name="url_m" value="{{ photo.url_w }}">
+        <input type="hidden" name="url_original" value="https://live.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_b.jpg">
+        <button type="submit">
+            <i class="far fa-heart fa-2x"></i>
+        </button>
+    </form>
+</div>

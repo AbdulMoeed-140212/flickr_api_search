@@ -1,0 +1,14 @@
+<div class="row tm-mb-90">
+    <div class="col-12 d-flex justify-content-between align-items-center tm-paging-col">
+        <a href="{{ prev_url }}" class="btn btn-primary tm-btn-prev {% if page == 1 %} disabled {% endif %}">Previous</a>
+        <div class="tm-paging d-flex my-1">
+            <form action="{{ goto }}" class="tm-text-primary" method="GET">
+                Page <input type="text" value="{{ page }}" size="1" class="tm-input-paging tm-text-primary" name="page"> of {{ pages }}
+                <input type="hidden" value="{{ query.lat | default_if_none:'' }}" name="lat">
+                <input type="hidden" value="{{ query.lng | default_if_none:'' }}" name="lng">
+                <input type="hidden" value="{{ query.location | default_if_none:'' }}" name="location">
+            </form>
+        </div>
+        <a href="{{next_url}}" class="btn btn-primary tm-btn-next {% if page == pages %} disabled {% endif %}">Next Page</a>
+    </div>            
+</div>

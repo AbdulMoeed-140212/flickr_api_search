@@ -1,0 +1,20 @@
+
+{% extends "search/base.html" %}
+{% load static%}
+{% block body %}
+    {% if result %}
+        <div class="container-fluid tm-container-content tm-mt-60">
+            <div class="row mb-4">
+                <h2 class="col-6 tm-text-primary">
+                    {{ result.photos.total }} Photos Found
+                </h2>
+            </div>
+            <div class="row tm-mb-90 tm-gallery">
+                {% for photo  in result.photos.photo%}
+                    {% include "search/components/photo.html" with photo=photo %}
+                {% endfor %}
+            </div> <!-- row -->
+            {% include 'search/components/pagination.html' with page=result.photos.page pages=result.photos.pages prev=prev_url next=next_url query=query %}
+        </div> <!-- container-fluid, tm-container-content -->
+    {% endif %}
+{% endblock %}

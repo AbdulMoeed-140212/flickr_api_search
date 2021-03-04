@@ -1,0 +1,18 @@
+{% extends "search/base.html" %}
+{% block body %}
+    <div class="container-fluid tm-container-content tm-mt-60">
+        <div class="row mb-4">
+            <h2 class="col-6 tm-text-primary">
+                My Favourites
+            </h2>
+        </div>
+        <div class="row tm-mb-90 tm-gallery">
+            {% for photo in object_list %}
+                {% include 'search/components/photo_favourite.html' with photo=photo %}
+            {% empty %}
+                <h4>No articles yet.</h4>
+            {% endfor %}
+        </div> <!-- row -->
+        
+    </div> <!-- container-fluid, tm-container-content -->
+{% endblock %}

@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'search:home_page'%}">
+            <i class="fas fa-film mr-2"></i>
+            Flickr Location
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+            
+            <li class="nav-item">
+                {% if request.user.is_authenticated%}
+                <a class="nav-link nav-link-2" href="{% url 'search:favourite_page' %}">Favourties</a>
+                <a class="nav-link nav-link-2" href="{% url 'search:logout' %}">Logout</a>
+                {% else %}
+                <a class="nav-link nav-link-2" href="{% url 'search:login' %}">Login</a>
+                {% endif %}
+            </li>
+            
+        </ul>
+        </div>
+    </div>
+</nav>
